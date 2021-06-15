@@ -16,8 +16,7 @@
                         <div class="form-group  mt-3">
                             <label for="body" > <strong> Title Body</strong>   </label>
                             <textarea   v-model.trim="form.body" rows="10" class="form-control  mt-3" id="body" placeholder="body" />
-                            <label class="form-check-label" for="exampleCheck1" v-if="errors.body">{{ errors.body[0]}} </label>
-
+                            <small class="form-check-label" for="exampleCheck1" v-if="errors.body">{{ errors.body[0]}} </small>
                         </div>
                         <button type="submit" class="btn btn-primary mt-3" >Create Topic</button>
                         </form>

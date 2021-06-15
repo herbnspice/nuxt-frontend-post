@@ -5,14 +5,13 @@
         </div>
         <div class="md-12">
             <div v-for="(topic, index ) in topics" :key="index" class="bg-light mt-5 mb-5">
-                <nuxt-link tag="h2" :to="{ name : 'topics-id', params : { id: topic.id }}"> {{ topic.title}}</nuxt-link>
+                <nuxt-link tag="h2" :to="{ name : 'topics-id', params : { id: topic.id }}"> {{ topic.title}} </nuxt-link>
                 <div v-for="(content, index) in topic.posts" :key="index" class="ml-5 content">
-                    {{ content.body}}
+                    <p> {{ content.body}}  </p>
                     <p class="text-muted">
                     {{topic.created_at}} by {{ topic.user.name}}
                 </p>
                 </div>
-                
             </div>
         </div>
         <div class="md-12">
@@ -22,7 +21,6 @@
                 </li>
             </ul>
         </div>
-        
     </div>
 </template>
 <script>
