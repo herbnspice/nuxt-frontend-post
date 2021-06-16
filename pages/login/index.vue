@@ -17,14 +17,10 @@
                             <label for="password" >Password</label>
                             <input type="password"  v-model.trim="form.password" class="form-control" id="password" placeholder="Password">
                         </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1" v-if="errors.password">{{ errors.password[0]}} </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary mt-2">Login</button>
                         </form>
+                        <p class="mt-2"> Dont have an account? <nuxt-link to="/register"> Register here</nuxt-link> </p>
                     </div>
-                    <p> Dont have an account? <nuxt-link to="/register"> Register here</nuxt-link> </p>
                 </div>
             </div>
         </div>

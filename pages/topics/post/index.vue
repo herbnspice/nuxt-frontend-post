@@ -1,11 +1,12 @@
 <template>
-    <div class="container row">
-        <div class="md-12">
-            <h2> {{ form.body }} </h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h2> {{ form.body }} </h2>
+            </div>
+            <nuxt-link tag="a" :to="{ name : 'topics-post-edit', params : { id: this.$route.params.id, topicid: this.$route.params.topicid  }}">Edit</nuxt-link>
+            <button @click.prevent="deletePost( content.id )">Delete</button>
         </div>
-        <nuxt-link tag="a" :to="{ name : 'topics-post-edit', params : { id: this.$route.params.id, topicid: this.$route.params.topicid  }}">Edit</nuxt-link>
-        <button @click.prevent="deletePost( content.id )">Delete</button>
-
     </div>
 </template>
 <script>
