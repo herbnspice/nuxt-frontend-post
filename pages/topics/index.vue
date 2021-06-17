@@ -12,6 +12,9 @@
                     <p class="text-light fs-6 m-0">
                     {{topic.created_at}} by {{ topic.user.name}}
                 </p>
+                <div class="btn btn-outline-primary fa fa-thumbs-up float-end" @click="likePost( topic.id , content )"> 
+                    <span class="badge"> {{ content.like_count}}</span>
+                </div>
                 </div>
             </div>
         </div>
@@ -38,6 +41,29 @@ export default {
             let {data, links } = await this.$axios.$get(key)
             this.topics  = {...this.$title, ...data }
             this.links = links
+        },
+        async likePost( topicId, content){
+            const userFormVueX = this.$store.getters["user"]
+            console.log( userFormVueX, content.users )
+            if( userFormVueX ){
+                if( userFormVueX.data.id === content.user.id ){
+                    alert('you cant like your own post')
+                }
+                if( content.users){
+                    if( content.users.some( userFormVueX.data.id )) {
+                         alert('you already liked  this  post')
+                    }
+                 } else {
+                        await this.$axios.post(`/topics/${topicId}/posts/${content.id}/likes`)
+                        let { data, links } = await this.$axios.$get(`/topics`)
+
+                        this.topics  = data
+                        this.links  = links
+                    }
+            } else {
+                alert('Please login ')
+                this.$router.push('/')
+            }
         }
     },
     async asyncData( {$axios}){
